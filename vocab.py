@@ -10,14 +10,20 @@ def ask(key,vocab):
         if user == 'Q':
             return False
         elif user == 'A':
-            print(answer)
+            for i in answer:
+                print(i)
             return True
-        elif user == answer:
+        elif user in answer:
             print("Correct")
             return True
         print("Wrong answer. You have",counter,'tries left')
         counter -= 1
-    print("The correct answer is:",answer)
+    print("The correct answer is: ",end='')
+    for i in answer:
+        if i.index!=len(answer)-1:
+            print(i,end=',')
+        else:
+            print(i)
     return True
 
 def trainer(vocab):
