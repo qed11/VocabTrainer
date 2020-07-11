@@ -15,6 +15,11 @@ def ask(key,vocab):
             return True
         elif user in answer:
             print("Correct")
+            if len(answer)>1:
+                print('These words have the same meaning:')
+                for i in answer:
+                    if answer != i:
+                        print(i)
             return True
         print("Wrong answer. You have",counter,'tries left')
         counter -= 1
@@ -43,7 +48,10 @@ if __name__=='__main__':
     for i in range(len(lines)):
         lines[i]=lines[i].replace('\n','')
         eng, chn= lines[i].split(' ')
-        vocabBook[chn] = eng
+        if chn in vocabBook:
+            vocabBook[chn].append(eng)
+        else:
+            vocabBook[chn] = [eng]
     trainer(vocabBook)  
 
     
